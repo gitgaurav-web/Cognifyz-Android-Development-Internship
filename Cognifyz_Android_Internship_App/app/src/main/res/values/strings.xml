@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Cognifyz Internship</string>
+    <string name="author_name">Gaurav Kumar</string>
+    <string name="author_email">ama.gauravkumar@gmail.com</string>
+    <string name="role_title">Android Development Intern</string>
+    
+    <!-- Dashboard Titles -->
+    <string name="dashboard_title">Cognifyz Technologies</string>
+    <string name="dashboard_subtitle">Android Internship Project Showcase</string>
+    
+    <!-- Level 1 -->
+    <string name="level_1_title">Level 1: Beginner</string>
+    <string name="task_1_title">Task 1: Hello World App</string>
+    <string name="task_1_desc">Basic welcome layout with custom greeting</string>
+    <string name="task_2_title">Task 2: Button Interaction</string>
+    <string name="task_2_desc">Click listener, interactive counter and Toast feedback</string>
+    <string name="hello_world_message">Hello World!\n\nWelcome to Android Development Internship at Cognifyz IT Solutions Pvt. Ltd.\n\nDeveloper: Gaurav Kumar</string>
+    
+    <!-- Level 2 -->
+    <string name="level_2_title">Level 2: Intermediate</string>
+    <string name="task_3_title">Task 3: List Display</string>
+    <string name="task_3_desc">ListView with custom adapter and interactive items</string>
+    <string name="task_4_title">Task 4: Basic UI Layout</string>
+    <string name="task_4_desc">Multi-activity navigation with XML layout styling</string>
+    
+    <!-- Level 3 -->
+    <string name="level_3_title">Level 3: Advanced</string>
+    <string name="task_5_title">Task 5: Fetch &amp; Display Data</string>
+    <string name="task_5_desc">Dynamic RecyclerView with CardView and real-time items</string>
+    <string name="task_6_title">Task 6: Simple Form</string>
+    <string name="task_6_desc">Registration form with input validations and submission</string>
+    
+    <!-- Level 4 -->
+    <string name="level_4_title">Level 4: Expert</string>
+    <string name="task_7_title">Task 7: SQLite Database</string>
+    <string name="task_7_desc">SQLiteOpenHelper for storing, viewing and deleting user records</string>
+    <string name="task_8_title">Task 8: Smooth Navigation</string>
+    <string name="task_8_desc">Explicit intents with smooth transition animations</string>
+</resources>
