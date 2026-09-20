@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Background Circle -->
+    <path
+        android:fillColor="#1A237E"
+        android:pathData="M54,4 C26.4,4 4,26.4 4,54 C4,81.6 26.4,104 54,104 C81.6,104 104,81.6 104,54 C104,26.4 81.6,4 54,4 Z" />
+    <!-- Cyan Accent Triangle -->
+    <path
+        android:fillColor="#00BCD4"
+        android:pathData="M54,22 L76,60 L32,60 Z" />
+    <!-- Amber Accent Triangle -->
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M54,42 L76,82 L32,82 Z" />
+    <!-- Inner Core White Circle -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,46 C49.6,46 46,49.6 46,54 C46,58.4 49.6,62 54,62 C58.4,62 62,58.4 62,54 C62,49.6 58.4,46 54,46 Z" />
+</vector>

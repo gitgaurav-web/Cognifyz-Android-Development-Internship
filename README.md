@@ -1,4 +1,4 @@
-﻿# 📱 Cognifyz Android Development Internship Projects
+# 📱 Cognifyz Android Development Internship Projects
 
 ![Android](https://img.shields.io/badge/Platform-Android-3DDC84?logo=android&logoColor=white)
 ![Java](https://img.shields.io/badge/Language-Java-ED8B00?logo=openjdk&logoColor=white)
@@ -35,20 +35,30 @@ This repository contains production-ready implementations for all **8 tasks acro
 
 ---
 
-## 🔥 Pro Max Features Included
+## 🔥 Production Compliance & Pro Max Features
 
-1. 🤖 **In-App Smart AI Assistant ("Cognifyz AI Bot"):**
+1. 🎨 **Custom App Name & Branded Launcher Logo (`ic_cognifyz_launcher`):**
+   * High-definition vector Cognifyz icon with modern geometry replacing default Android placeholder icons.
+2. 🔐 **Authentication & Registration Gateway (`LoginActivity`):**
+   * Sign In / Sign Up toggle with input validation, session persistence via `SessionManager`, and a 1-tap `⚡ Fast Evaluation: Continue as Intern Gaurav` button for instant reviewer access.
+3. ⚙️ **Settings & Intern Profile (`SettingsActivity`):**
+   * Intern details card, dynamic Dark / Light theme toggle, push notification preferences, and safe logout.
+4. 🔒 **In-App Legal Modals (Privacy Policy & Terms):**
+   * Built-in dialogs explaining data safety (100% offline local SQLite storage, no GPS/contact tracking).
+5. ✉️ **Contact & Help Support:**
+   * Direct email intent launcher to `support@cognifyz.com` and one-tap access to the official portal (`www.cognifyz.com`).
+6. 🌐 **Resilient Error Handling & Retry:**
+   * Detects network dropouts before API calls and displays interactive Snackbars with a **RETRY** action.
+7. 📂 **Empty States & Loading Indicators:**
+   * Dedicated empty state views with descriptive icons when SQLite database has 0 records or during list filtering, plus indeterminate progress bars during network fetch.
+8. 🛡️ **Minimal, Genuine Permissions:**
+   * Strictly requests essential capabilities only (`INTERNET`, `ACCESS_NETWORK_STATE`, `VIBRATE`, `POST_NOTIFICATIONS`).
+9. 🤖 **In-App Smart AI Assistant ("Cognifyz AI Bot"):**
    * Built-in conversational Android tutor answering technical architecture questions (Lifecycle, SQLite, REST APIs, Intents, Kotlin vs Java) with realistic typing delays.
-2. 🔔 **Android System Push Notifications (`NotificationManager`):**
-   * Fires real Android push notifications on form submissions and SQLite database operations.
-3. 📄 **SQLite CSV Data Export:**
-   * One-click export of local SQLite records to CSV format, shareable via WhatsApp, Gmail, or Google Drive.
-4. 📶 **Real-Time Network Status Monitor:**
-   * Live status monitor on the dashboard showing `Online (REST API Ready)` vs `Offline (SQLite Cache Active)`.
-5. 💻 **In-App Code Inspector:**
-   * Tapping "View Code" on any task opens a formatted dialog showing the underlying Java and XML implementation directly in the running app!
-6. 🌙 **Dynamic Dark / Light Mode Switcher:**
-   * Seamless theme switching with state saved locally in Android `SharedPreferences`.
+10. 📄 **SQLite CSV Data Export:**
+    * One-click export of local SQLite records to CSV format, shareable via WhatsApp, Gmail, or Google Drive.
+11. 💻 **In-App Code Inspector:**
+    * Tapping "View Code" on any task opens a formatted dialog showing the underlying Java and XML implementation directly in the running app!
 
 ---
 

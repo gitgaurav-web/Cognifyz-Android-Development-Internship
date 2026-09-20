@@ -9,9 +9,9 @@
 
     <application
         android:allowBackup="false"
-        android:icon="@android:drawable/sym_def_app_icon"
+        android:icon="@drawable/ic_cognifyz_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@android:drawable/sym_def_app_icon"
+        android:roundIcon="@drawable/ic_cognifyz_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.CognifyzInternship">
 
@@ -25,9 +25,9 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <!-- Main Dashboard -->
+        <!-- Authentication / Launch Gateway -->
         <activity
-            android:name=".MainActivity"
+            android:name=".auth.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.CognifyzInternship.NoActionBar">
             <intent-filter>
@@ -35,6 +35,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Main Dashboard -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.CognifyzInternship.NoActionBar" />
+
+        <!-- Settings & Profile -->
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="Settings &amp; Profile" />
 
         <!-- AI Assistant Activity -->
         <activity

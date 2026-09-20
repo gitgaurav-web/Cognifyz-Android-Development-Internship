@@ -57,7 +57,19 @@
                     android:textColor="#FFFFFF"
                     android:backgroundTint="#33FFFFFF"
                     android:textSize="11sp"
-                    android:layout_marginEnd="6dp"
+                    android:layout_marginEnd="4dp"
+                    app:cornerRadius="20dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_open_settings"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⚙️ Settings"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#33FFFFFF"
+                    android:textSize="11sp"
+                    android:layout_marginEnd="4dp"
                     app:cornerRadius="20dp" />
 
                 <com.google.android.material.button.MaterialButton
@@ -91,6 +103,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_intern_name_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Intern: Gaurav Kumar"

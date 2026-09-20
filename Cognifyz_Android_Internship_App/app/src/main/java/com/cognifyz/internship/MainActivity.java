@@ -19,24 +19,23 @@ import com.cognifyz.internship.level3.FetchDisplayDataActivity;
 import com.cognifyz.internship.level3.SimpleFormActivity;
 import com.cognifyz.internship.level4.NavigationActivity;
 import com.cognifyz.internship.level4.SqliteDatabaseActivity;
+import com.cognifyz.internship.settings.SettingsActivity;
 import com.cognifyz.internship.util.NetworkUtils;
+import com.cognifyz.internship.util.SessionManager;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String PREFS_NAME = "cognifyz_theme_prefs";
-    private static final String KEY_DARK_MODE = "is_dark_mode";
-    private SharedPreferences preferences;
-    private MaterialButton btnThemeToggle, btnOpenAi;
+    private SessionManager sessionManager;
+    private MaterialButton btnThemeToggle, btnOpenAi, btnOpenSettings;
     private Button btnShareProject;
-    private TextView tvNetworkBadge;
+    private TextView tvNetworkBadge, tvInternNameHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        preferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        boolean isDarkMode = preferences.getBoolean(KEY_DARK_MODE, false);
-        if (isDarkMode) {
+        sessionManager = new SessionManager(this);
+        if (sessionManager.isDarkMode()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -47,18 +46,22 @@ public class MainActivity extends AppCompatActivity {
 
         btnThemeToggle = findViewById(R.id.btn_theme_toggle);
         btnOpenAi = findViewById(R.id.btn_open_ai);
+        btnOpenSettings = findViewById(R.id.btn_open_settings);
         btnShareProject = findViewById(R.id.btn_share_project);
         tvNetworkBadge = findViewById(R.id.tv_network_badge);
+        tvInternNameHeader = findViewById(R.id.tv_intern_name_header);
 
-        btnThemeToggle.setText(isDarkMode ? " Light" : " Dark");
+        btnThemeToggle.setText(sessionManager.isDarkMode() ? "☀️ Light" : "🌙 Dark");
+        tvInternNameHeader.setText("Intern: " + sessionManager.getUserName());
+
+        // Open Settings & Profile
+        btnOpenSettings.setOnClickListener(v -> {
+            v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+        });
 
         // Network Status Monitor
-        boolean isOnline = NetworkUtils.isNetworkAvailable(this);
-        if (isOnline) {
-            tvNetworkBadge.setText(" Online ? REST API & All 8 Tasks Ready");
-        } else {
-            tvNetworkBadge.setText(" Offline Mode ? SQLite Cache Active");
-        }
+        updateNetworkStatus();
 
         // Open AI Assistant
         btnOpenAi.setOnClickListener(v -> {
@@ -68,9 +71,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Toggle Dark/Light Mode
         btnThemeToggle.setOnClickListener(v -> {
-            boolean currentMode = preferences.getBoolean(KEY_DARK_MODE, false);
+            boolean currentMode = sessionManager.isDarkMode();
             boolean newMode = !currentMode;
-            preferences.edit().putBoolean(KEY_DARK_MODE, newMode).apply();
+            sessionManager.setDarkMode(newMode);
 
             if (newMode) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -130,6 +133,29 @@ public class MainActivity extends AppCompatActivity {
                         .show();
             });
         }
+    }
+
+    private void updateNetworkStatus() {
+        boolean isOnline = NetworkUtils.isNetworkAvailable(this);
+        if (isOnline) {
+            tvNetworkBadge.setText("🟢 Online • REST API & All 8 Tasks Ready");
+        } else {
+            tvNetworkBadge.setText("🟠 Offline Mode • SQLite Cache Active");
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (sessionManager != null) {
+            if (tvInternNameHeader != null) {
+                tvInternNameHeader.setText("Intern: " + sessionManager.getUserName());
+            }
+            if (btnThemeToggle != null) {
+                btnThemeToggle.setText(sessionManager.isDarkMode() ? "☀️ Light" : "🌙 Dark");
+            }
+        }
+        updateNetworkStatus();
     }
 }
 

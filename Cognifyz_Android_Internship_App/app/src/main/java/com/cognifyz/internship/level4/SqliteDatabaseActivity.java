@@ -34,6 +34,7 @@ public class SqliteDatabaseActivity extends AppCompatActivity {
     private Button btnInsert, btnExportCsv;
     private TextView tvHeader;
     private RecyclerView recyclerView;
+    private android.widget.LinearLayout llEmptyState;
     private UserRecordAdapter adapter;
     private List<UserRecord> recordList;
 
@@ -57,6 +58,7 @@ public class SqliteDatabaseActivity extends AppCompatActivity {
         btnExportCsv = findViewById(R.id.btn_db_export_csv);
         tvHeader = findViewById(R.id.tv_db_records_header);
         recyclerView = findViewById(R.id.recycler_view_db);
+        llEmptyState = findViewById(R.id.ll_db_empty_state);
 
         // Pre-fill initial entry if database is empty
         recordList = dbHelper.getAllUsers();
@@ -213,7 +215,16 @@ public class SqliteDatabaseActivity extends AppCompatActivity {
     }
 
     private void updateHeaderCount() {
-        tvHeader.setText("Records (" + recordList.size() + ") ? Tap card to Edit");
+        tvHeader.setText("Records (" + recordList.size() + ") • Tap card to Edit");
+        if (llEmptyState != null && recyclerView != null) {
+            if (recordList.isEmpty()) {
+                llEmptyState.setVisibility(View.VISIBLE);
+                recyclerView.setVisibility(View.GONE);
+            } else {
+                llEmptyState.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     @Override
