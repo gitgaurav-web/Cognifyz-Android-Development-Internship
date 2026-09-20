@@ -19,16 +19,34 @@
             android:background="@drawable/bg_gradient_header"
             android:padding="20dp">
 
+            <!-- Row 1: App Branding & Title (Full Width) -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="3dp"
+                    app:cardBackgroundColor="#1A237E"
+                    app:strokeColor="#4D00BCD4"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="6dp"
+                        android:src="@drawable/ic_cognifyz_launcher"
+                        android:contentDescription="Cognifyz Logo" />
+                </com.google.android.material.card.MaterialCardView>
+
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -36,8 +54,9 @@
                         android:layout_height="wrap_content"
                         android:text="@string/dashboard_title"
                         android:textColor="#FFFFFF"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:singleLine="true" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -45,43 +64,58 @@
                         android:layout_marginTop="2dp"
                         android:text="@string/dashboard_subtitle"
                         android:textColor="#B3E5FC"
-                        android:textSize="13sp" />
+                        android:textSize="12sp"
+                        android:singleLine="true" />
                 </LinearLayout>
+            </LinearLayout>
+
+            <!-- Row 2: Action Buttons Row (Evenly Distributed) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="14dp">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_open_ai"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
                     android:text="🤖 AI Bot"
                     android:textColor="#FFFFFF"
                     android:backgroundTint="#33FFFFFF"
                     android:textSize="11sp"
-                    android:layout_marginEnd="4dp"
-                    app:cornerRadius="20dp" />
+                    android:padding="0dp"
+                    app:cornerRadius="18dp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_open_settings"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
                     android:text="⚙️ Settings"
                     android:textColor="#FFFFFF"
                     android:backgroundTint="#33FFFFFF"
                     android:textSize="11sp"
-                    android:layout_marginEnd="4dp"
-                    app:cornerRadius="20dp" />
+                    android:padding="0dp"
+                    app:cornerRadius="18dp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_theme_toggle"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
                     android:text="🌙 Theme"
                     android:textColor="#FFFFFF"
                     android:backgroundTint="#26FFFFFF"
                     android:textSize="11sp"
-                    app:cornerRadius="20dp" />
+                    android:padding="0dp"
+                    app:cornerRadius="18dp" />
             </LinearLayout>
 
             <View
