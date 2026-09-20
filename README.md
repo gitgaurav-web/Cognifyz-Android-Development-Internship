@@ -57,8 +57,12 @@ This repository contains production-ready implementations for all **8 tasks acro
    * Built-in conversational Android tutor answering technical architecture questions (Lifecycle, SQLite, REST APIs, Intents, Kotlin vs Java) with realistic typing delays.
 10. 📄 **SQLite CSV Data Export:**
     * One-click export of local SQLite records to CSV format, shareable via WhatsApp, Gmail, or Google Drive.
-11. 💻 **In-App Code Inspector:**
-    * Tapping "View Code" on any task opens a formatted dialog showing the underlying Java and XML implementation directly in the running app!
+11. 💻 **In-App Code Inspector & One-Tap Copy:**
+    * Tapping "View Code" opens formatted snippets with an interactive **"📋 Copy Code"** button that copies code directly to the clipboard with haptic feedback!
+12. 🚀 **Branded Animated Splash Screen (`SplashActivity`):**
+    * High-definition dark gradient gateway featuring the Cognifyz logo, tagline *"Where Data Meets Innovation"*, and smooth zoom/fade transition.
+13. 🎓 **Digital Verified Milestone Certificate Card:**
+    * Interactive in-app achievement certificate showcasing Gaurav Kumar's 100% verified completion of all 8 tasks with direct share intent.
 
 ---
 

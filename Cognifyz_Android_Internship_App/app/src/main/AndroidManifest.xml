@@ -25,9 +25,9 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <!-- Authentication / Launch Gateway -->
+        <!-- Splash Screen (App Launch Gateway) -->
         <activity
-            android:name=".auth.LoginActivity"
+            android:name=".SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.CognifyzInternship.NoActionBar">
             <intent-filter>
@@ -35,6 +35,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Authentication / Login & Register -->
+        <activity
+            android:name=".auth.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.CognifyzInternship.NoActionBar" />
 
         <!-- Main Dashboard -->
         <activity

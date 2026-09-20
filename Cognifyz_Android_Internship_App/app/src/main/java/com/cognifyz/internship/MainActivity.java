@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.HapticFeedbackConstants;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -92,6 +95,15 @@ public class MainActivity extends AppCompatActivity {
             startActivity(Intent.createChooser(shareIntent, "Share Project via"));
         });
 
+        // Milestone Certificate Card
+        MaterialCardView cardCert = findViewById(R.id.card_view_certificate);
+        if (cardCert != null) {
+            cardCert.setOnClickListener(v -> {
+                v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                showMilestoneCertificateDialog();
+            });
+        }
+
         // Setup Task Cards
         setupCard(R.id.card_task_1, HelloWorldActivity.class);
         setupCard(R.id.card_task_2, ButtonInteractionActivity.class);
@@ -127,12 +139,52 @@ public class MainActivity extends AppCompatActivity {
             btn.setOnClickListener(v -> {
                 v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 new AlertDialog.Builder(this)
-                        .setTitle(" " + title)
+                        .setTitle("💻 " + title)
                         .setMessage(codeSnippet)
-                        .setPositiveButton("Close", null)
+                        .setPositiveButton("📋 Copy Code", (dialog, which) -> {
+                            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                            android.content.ClipData clip = android.content.ClipData.newPlainText("Cognifyz Code", codeSnippet);
+                            if (clipboard != null) {
+                                clipboard.setPrimaryClip(clip);
+                            }
+                            v.performHapticFeedback(HapticFeedbackConstants.CONFIRM);
+                            Toast.makeText(MainActivity.this, "Code snippet copied to clipboard! 📋", Toast.LENGTH_SHORT).show();
+                        })
+                        .setNegativeButton("Close", null)
                         .show();
             });
         }
+    }
+
+    private void showMilestoneCertificateDialog() {
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_certificate, null);
+        TextView tvIntern = dialogView.findViewById(R.id.tv_cert_intern_name);
+        Button btnShare = dialogView.findViewById(R.id.btn_cert_share);
+        Button btnClose = dialogView.findViewById(R.id.btn_cert_close);
+
+        if (sessionManager != null) {
+            tvIntern.setText(sessionManager.getUserName());
+        }
+
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setView(dialogView)
+                .create();
+
+        btnClose.setOnClickListener(v -> dialog.dismiss());
+        btnShare.setOnClickListener(v -> {
+            v.performHapticFeedback(HapticFeedbackConstants.CONFIRM);
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            String shareMessage = "🎓 Verified Android Development Internship Milestone!\n\n" +
+                    "I have accomplished and verified all 8 tasks across 4 levels at Cognifyz IT Solutions Pvt. Ltd.\n" +
+                    "Intern: " + (sessionManager != null ? sessionManager.getUserName() : "Gaurav Kumar") + "\n" +
+                    "Tenure: 31/08/2026 to 01/10/2026\n" +
+                    "#cognifyz #cognifyztech #cognifyztechnologies #AndroidDev #InternshipMilestone";
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+            startActivity(Intent.createChooser(shareIntent, "Share Internship Milestone via"));
+        });
+
+        dialog.show();
     }
 
     private void updateNetworkStatus() {
